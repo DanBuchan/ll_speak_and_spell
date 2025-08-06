@@ -33,10 +33,60 @@ def render_audio(samples, document, period_pause, comma_pause):
     audio = AudioSegment.silent(duration=0)
     #read it out
     for letter in document:
+        if letter is '1':
+            audio = audio + samples['o']
+            audio = audio + samples['n']
+            audio = audio + samples['e']
+        if letter is '2':
+            audio = audio + samples['t']
+            audio = audio + samples['w']
+            audio = audio + samples['o']
+        if letter is '3':
+            audio = audio + samples['t']
+            audio = audio + samples['h']
+            audio = audio + samples['r']
+            audio = audio + samples['e']
+            audio = audio + samples['e']
+        if letter is '4':
+            audio = audio + samples['f']
+            audio = audio + samples['o']
+            audio = audio + samples['u']
+            audio = audio + samples['r']
+        if letter is '5':
+            audio = audio + samples['f']
+            audio = audio + samples['i']
+            audio = audio + samples['v']
+            audio = audio + samples['e']
+        if letter is '6':
+            audio = audio + samples['s']
+            audio = audio + samples['i']
+            audio = audio + samples['x']
+        if letter is '7':
+            audio = audio + samples['s']
+            audio = audio + samples['e']
+            audio = audio + samples['v']
+            audio = audio + samples['e']
+            audio = audio + samples['n']
+        if letter is '8':
+            audio = audio + samples['e']
+            audio = audio + samples['i']
+            audio = audio + samples['g']
+            audio = audio + samples['h']
+            audio = audio + samples['t']
+        if letter is '9':
+            audio = audio + samples['n']
+            audio = audio + samples['i']
+            audio = audio + samples['n']
+            audio = audio + samples['e']
+        if letter is '0':
+            audio = audio + samples['z']
+            audio = audio + samples['e']
+            audio = audio + samples['r']
+            audio = audio + samples['o']    
         if letter in periods:
-            audio = audio + AudioSegment.silent(duration=args.period_pause)
+            audio = audio + AudioSegment.silent(duration=period_pause)
         elif letter in commas:
-            audio = audio + AudioSegment.silent(duration=args.comma_pause)
+            audio = audio + AudioSegment.silent(duration=comma_pause)
         elif letter in samples:
             audio = audio + samples[letter]
     return audio
